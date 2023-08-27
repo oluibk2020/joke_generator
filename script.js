@@ -1,7 +1,7 @@
 const jokeBtn = document.querySelector("#joke-btn");
 const joke = document.querySelector("#joke");
 
-function jokeGenerator(e) {
+function jokeGenerator() {
   const xhr = new XMLHttpRequest();
 
   //getting jokes from api
@@ -12,6 +12,8 @@ function jokeGenerator(e) {
       let data = JSON.parse(this.responseText);
 
       joke.textContent = data.value;
+    } else {
+      joke.textContent = "Network failure- Please check your connection";
     }
   };
 
@@ -19,3 +21,4 @@ function jokeGenerator(e) {
 }
 
 jokeBtn.addEventListener("click", jokeGenerator);
+document.addEventListener('DOMContentLoaded',jokeGenerator)
